@@ -33,7 +33,7 @@ $ git push --set-upstream origin master
 ![refresh-results](/assets/refresh.png)
 6. Go to Settings -> Pages (Sidebar), and you should see this green box (If it's blue, just wait for a few seconds and refresh the page)
 ![Alt Text](/assets/settings-pages.png)
-7. Click the url and boom! You have your brand-new blogging site all set!
+Click the url and boom! You have your brand-new blogging site all set!
 
 ### Get your site running on a local server
 ```shell
