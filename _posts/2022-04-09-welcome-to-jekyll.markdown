@@ -1,29 +1,46 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title:  "Blogging with Jekyll and Github Pages"
 date:   2022-04-09 14:57:04 -0400
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
+### Prerequisites
+- Have a GitHub account
+- [Get Git installed]
+- [Get Jekyll installed]
+- [Install Bundler] using `gem install bundler`
 
-Jekyll requires blog post files to be named according to the following format:
+### When you are ready
+1. Create a new repository on Github
+2. Use "\[username\].github.io" as your repo name (Remember to replace username with your OWN GitHub username)
+![name-repo](/assets/set-name.png)
+3. After creating the repository, you will be directed to a new page. For now, just leave it alone.
+![new-page](/assets/new-page.png)
+4. From your terminal, create a new Jekyll site at ./myblog, then direct to the directory you just created (you can change "myblog" to whatever directory name you want)
+```shell
+$ jekyll new myblog
+$ cd myblog
+```
+5. Run the following commands (Don't forget to replace "zzhiyuan98" with your username)
+```shell
+$ git init
+$ git add .
+$ git commit -m "Initial GitHub pages site with Jekyll"
+$ git remote add origin https://github.com/zzhiyuan98/zzhiyuan98.github.io.git
+$ git push --set-upstream origin master
+```
+5. Refresh the page you got in step 3, and you should see your new commit
+![refresh-results](/assets/refresh.png)
+6. Go to Settings -> Pages (Sidebar), and you should see this green box (If it's blue, just wait for a few seconds and refresh the page)
+![Alt Text](/assets/settings-pages.png)
+7. Click the url and boom! You have your brand-new blogging site all set!
 
-`YEAR-MONTH-DAY-title.MARKUP`
+### Get your site running on a local server
+```shell
+bundle add webrick
+bundle exec jekyll serve
+```
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+[Get Git installed]: https://github.com/git-guides/install-git
+[Get Jekyll installed]: https://jekyllrb.com/docs/installation/
+[Install Bundler]: https://jekyllrb.com/docs/ruby-101/#gems
