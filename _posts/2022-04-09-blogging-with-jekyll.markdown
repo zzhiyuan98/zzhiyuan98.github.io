@@ -2,7 +2,7 @@
 layout: post
 title:  "Blogging with Jekyll and Github Pages"
 date:   2022-04-09 14:57:04 -0400
-categories: jekyll update
+categories: jekyll updates
 ---
 ### Prerequisites
 - Have a GitHub account
