@@ -38,7 +38,7 @@ Click the url and boom! You have your brand-new blogging site all set!
 ### Get your site running on a local server
 ```shell
 bundle add webrick
-bundle exec jekyll serve
+bundle exec jekyll server
 ```
 
 [Get Git installed]: https://github.com/git-guides/install-git

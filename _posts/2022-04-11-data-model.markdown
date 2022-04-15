@@ -74,7 +74,7 @@ export function getDataModel() {
 // App.js
 import React, { useEffect, useState } from 'react';
 import { getDataModel } from './DataModel';
-import Item from 'Item.js';
+import Item from './Item';
 
 function App() {
   const dataModel = getDataModel();
