@@ -8,11 +8,11 @@ title: Firebase ✖ ️React联名：解放前端的后端
 - 非常适合我这种 (目前) 还不太会后端的小白
 
 ### Firestore 数据库长什么样？
-- 在最上面一层，只有集合 (collections)，集合可以想成是 SQL 数据库里的Table
+- 在最上面一层，只有集合 (collections)，集合可以想成是 SQL 数据库里的 Table
 - 集合只包含文档 (documents)，文档可以想成是 Table 里面的每一行
 - 文档可以包含 fields 或者集合，fields 类似于 Table 里面的列，值得注意的是，文档还可以嵌套集合
-- fields拥有不同的数据类型 (string, number, boolean, array,...)
-- Sibling collections (最高层的集合或同一个文档下的集合) 必须拥有独一无二的 ID(名字)
+- fields拥有不同的数据类型 (string, number, boolean, array, ...)
+- Sibling collections (最高层的集合或同一个文档下的集合) 必须拥有独一无二的 ID (名字)
 - Sibling documents (同一个集合下的文档) 必须拥有独一无二的 ID
 - 文档的 ID 可以自动生成且通常都是自动生成，集合则不然，通常会人为命名集合
 - 如果你了解 JSON 的话，Firestore 的结构有点类似于 JSON objects 的结构，简单来说就是集合套文档，文档套集合
@@ -70,6 +70,7 @@ Secrets.js
 
 # Annoying Mac OS file
 .DS_Store
+
 ```
 
 
