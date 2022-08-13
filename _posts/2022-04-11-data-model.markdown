@@ -1,6 +1,6 @@
 ---
 layout: post
-title: React里的订阅模式
+title: React 里的订阅模式
 ---
 ```javascript
 // DataModel.js
@@ -31,6 +31,7 @@ class Model {
     }
   }
 }
+
 ```
 
 ```javascript
@@ -68,6 +69,7 @@ export function getDataModel() {
   }
   return theDataModel;
 }
+
 ```
 
 ```jsx
@@ -94,4 +96,5 @@ function App() {
 }
 
 export default App;
+
 ```

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 用Firebase实现增删改查
+title: 用 Firebase 实现增删改查
 ---
 
 ```react
@@ -43,4 +43,5 @@ class DataModel extends Model {
   }
 
 }
+
 ```

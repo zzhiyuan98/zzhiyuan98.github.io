@@ -30,6 +30,7 @@ function App() {
 }
 
 export default App;
+
 ```
 ### Navigate without passing parammeters
 ```JSX
@@ -44,6 +45,7 @@ function Login() {
   </button>
 }
 export default Login;
+
 ```
 
 ### Pass parameters to routes
@@ -69,6 +71,7 @@ function Home() {
   );
 }
 export default Home;
+
 ```
 ```JSX
 // Details.js
@@ -86,6 +89,7 @@ function Details() {
   );
 }
 export default Details;
+
 ```
 
 ### Alternative: \<Link\> to Rescue
