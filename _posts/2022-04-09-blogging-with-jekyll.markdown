@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Blogging with Jekyll and Github Pages"
+title:  "Blogging with Jekyll and GitHub Pages"
 date:   2022-04-09 14:57:04 -0400
 categories: jekyll updates
 ---
@@ -11,7 +11,7 @@ categories: jekyll updates
 - [Install Bundler] using `gem install bundler`
 
 ### When you are ready
-1. Create a new repository on Github
+1. Create a new repository on GitHub
 2. Use "\[username\].github.io" as your repo name (Remember to replace username with your OWN GitHub username)
 ![name-repo](/assets/set-name.png)
 3. After creating the repository, you will be directed to a new page. For now, just leave it alone.

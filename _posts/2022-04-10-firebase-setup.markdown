@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Firebase ✖ ️React联名：解放前端的后端
+title: Firebase ✖ ️React 联名：解放前端的后端
 ---
 ### Firebase 是什么？
 - Google 提供的一种后端解决方案—— “不需要服务器的后端”
