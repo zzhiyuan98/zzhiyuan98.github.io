@@ -8,27 +8,27 @@ React Flow (RF) 的[官方文档]写得非常细，给出了很多可以直接�
 React Flow 是一个前端的组件库，官方给出的定义是 “a highly **customizable** React component for building **node-based** editors and **interactive diagrams**”。个人觉得这个定义非常精妙，精准地概括出了 RF 的优点和特点：可定制化、基于节点、交互流程图。
 以下是官网上的一些效果图。
 
-![img.png](img.png)
+![img.png](/assets/blog-react-flow/img.png)
 
-![img_1.png](img_1.png)
+![img_1.png](/assets/blog-react-flow/img_1.png)
 
-![img_2.png](img_2.png)
+![img_2.png](/assets/blog-react-flow/img_2.png)
 
 和 RF 功能相似的其它组件库主要有 react-diagrams， beautiful-react-diagrams，butterfly 等，不过他们的 Github Star 都没有 RF 多。
 这说明在一定程度上 **RF 是一个受更多开发者青睐的组件库**。
 
-![img_3.png](img_3.png)
+![img_3.png](/assets/blog-react-flow/img_3.png)
 
 有 11.2k 的人关注了这个库，最近的一次 commit 来自于 14 小时前，他们的 contributors 会在 issues 里面回答各式各样的问题，这些都是非常不错的加分项 👍
 
 👇 树也长得很好看
-![img_5.png](img_5.png)
+![img_5.png](/assets/blog-react-flow/img_5.png)
 
 ### 如何使用 React Flow
 1. 节点与连线 —— 你所需要知道的最少知识
 React Flow 的所有图形都是由节点（和连线）组成的。
    一个最简单的节点在代码里长这样 👇
-```javascript
+```jsx
 {
   id: "1", // unique id
   data: { label: "节点上面的文字" }, // 这里还可以加一些我们自己的参数进去
@@ -36,7 +36,7 @@ React Flow 的所有图形都是由节点（和连线）组成的。
 }
 ```
 一个最简单的连线在代码里长这样 👇
-```javascript
+```jsx
 {
   id: "e1-2", // unique id
   source: "1", // 出发节点的 id
@@ -47,7 +47,7 @@ React Flow 的所有图形都是由节点（和连线）组成的。
 有了最基本的节点（和连线），我们就可以把他们以**数组**的形式传给 `ReactFlow` 这个组件，然后我们就能拥有一个最简单的图了。
 
 提问：下面这段代码运行出来会是一个什么样的图形？
-```javascript
+```jsx
 import ReactFlow from 'react-flow-renderer';
 
 const initialNodes = [{
@@ -74,7 +74,7 @@ export default Flow;
 *“By default React Flow doesn't do any internal state updates besides handling the viewport when you set up a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to select, drag and remove nodes and edges you need to implement an onNodesChange and an onEdgesChange handler.”*
 
 `onNodesChange` 和 `onEdgesChange` 的实现本质上还是借助 RF 为我们提供的 Util Functions：`applyNodeChanges` 和 `applyEdgeChanges`。
-```javascript
+```jsx
   const onNodesChange = useCallback(
     changes => setNodes((ns) => applyNodeChanges(changes, ns)),
     []
@@ -85,7 +85,7 @@ export default Flow;
   );
 ```
 为了方便开发者们偷懒，RF 的作者们专门为我们提供了 hooks，直接一步到位。
-```javascript
+```jex
 const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
 const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
@@ -109,7 +109,7 @@ React Flow 为我们提供了一些非常有用的辅助函数：
 - 获得和节点相关的连线：`getOutgoers`, `getIncomers`, `getConnectedEdges`
 
 现在节点和连线的增删改查都变得简单起来了~
-```javascript
+```jsx
 // 添加连线 (onConnect 需要作为参数传给 ReactFlow)
 const onConnect = connection => setElements((es) => addEdge(connection, es));
 
@@ -127,13 +127,13 @@ onEdgesChange(edgesToDelete.map(e => ({ id: e.id, type: "remove" })));
 
 3. 自定义的魅力
 
-![img_6.png](img_6.png)
-![img_7.png](img_7.png)
+![img_6.png](/assets/blog-react-flow/img_6.png)
+![img_7.png](/assets/blog-react-flow/img_7.png)
 
 在我们实际写代码的时候，经常会遇到一些需要 customize 的场景，这时候就需要用到 [Custom Nodes] 和 [Custom Edges] 了。
 
 👇 举个例子，写一个自定义节点的流程大概是这样的
-```javascript
+```jsx
 const myInputNode = ({ data }) => {
   ...
   
@@ -163,8 +163,8 @@ const Flow = () => {
 ```
 
 自定义节点的时候，我们可以进一步设置 Handle 的属性
-- type: "source" | "target"
-- position: "top" | "bottom" | "left" | "right"
+- type: "source", "target"
+- position: "top", "bottom", "left", "right"
 
 我还有很多想说的，但是这里空白太小了，写不下。（完）
 
