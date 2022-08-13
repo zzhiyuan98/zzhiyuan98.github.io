@@ -85,7 +85,7 @@ export default Flow;
   );
 ```
 为了方便开发者们偷懒，RF 的作者们专门为我们提供了 hooks，直接一步到位。
-```jex
+```jsx
 const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
 const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
