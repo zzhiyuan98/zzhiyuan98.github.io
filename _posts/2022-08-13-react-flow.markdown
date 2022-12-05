@@ -8,21 +8,21 @@ React Flow (RF) 的[官方文档]写得非常细，给出了很多可以直接�
 React Flow 是一个前端的组件库，官方给出的定义是 “a highly **customizable** React component for building **node-based** editors and **interactive diagrams**”。个人觉得这个定义非常精妙，精准地概括出了 RF 的优点和特点：可定制化、基于节点、交互流程图。
 以下是官网上的一些效果图。
 
-![](../assets/blog-react-flow/img.png)
+![](/assets/blog-react-flow/img.png)
 
-![](../assets/blog-react-flow/img_1.png)
+![](/assets/blog-react-flow/img_1.png)
 
-![](../assets/blog-react-flow/img_2.png)
+![](/assets/blog-react-flow/img_2.png)
 
 和 RF 功能相似的其它组件库主要有 react-diagrams， beautiful-react-diagrams，butterfly 等，不过他们的 Github Star 都没有 RF 多。
 这说明在一定程度上 **RF 是一个受更多开发者青睐的组件库**。
 
-![](../assets/blog-react-flow/img_3.png)
+![](/assets/blog-react-flow/img_3.png)
 
 有 11.2k 的人关注了这个库，最近的一次 commit 来自于 14 小时前，他们的 contributors 会在 issues 里面回答各式各样的问题，这些都是非常不错的加分项 👍
 
 👇 树也长得很好看
-![](../assets/blog-react-flow/img_5.png)
+![](/assets/blog-react-flow/img_5.png)
 
 ### 如何使用 React Flow
 1. 节点与连线 —— 你所需要知道的最少知识
@@ -127,8 +127,8 @@ onEdgesChange(edgesToDelete.map(e => ({ id: e.id, type: "remove" })));
 
 3. 自定义的魅力
 
-![](../assets/blog-react-flow/img_6.png)
-![](../assets/blog-react-flow/img_7.png)
+![](/assets/blog-react-flow/img_6.png)
+![](/assets/blog-react-flow/img_7.png)
 
 在我们实际写代码的时候，经常会遇到一些需要 customize 的场景，这时候就需要用到 [Custom Nodes] 和 [Custom Edges] 了。
 
