@@ -26,6 +26,7 @@ React Flow 是一个前端的组件库，官方给出的定义是 “a highly **
 
 ### 如何使用 React Flow
 1. 节点与连线 —— 你所需要知道的最少知识
+
 React Flow 的所有图形都是由节点（和连线）组成的。
    一个最简单的节点在代码里长这样 👇
 ```jsx
@@ -69,6 +70,7 @@ export default Flow;
 ```
 
 2. 状态管理 —— 酷炫的 helper hooks
+
 默认情况下 RF 不会更新内部 nodes 和 edges 的状态。如果要实现像“选中”、“拖拽”、“移除”这样的功能，我们需要通过写 `onNodesChange` 和 `onEdgesChange` 来告诉 RF 当这些变化发生时需要做些什么。
 
 *“By default React Flow doesn't do any internal state updates besides handling the viewport when you set up a controlled flow. As with an `<input />` component you need to pass handlers to apply the changes that are triggered by React Flow to your nodes and edges. In order to select, drag and remove nodes and edges you need to implement an onNodesChange and an onEdgesChange handler.”*
