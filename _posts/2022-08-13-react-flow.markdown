@@ -159,7 +159,7 @@ const Flow = () => {
   ...
   const onAddNode = () => setNodes(nodes.concat(getInputNode({ someData: "一些想传给 CustomNode 的数据" })));
   ...
-  return <ReactFow ... nodeTypes={nodeTypes} />;
+  return <ReactFlow ... nodeTypes={nodeTypes} />;
 };
 
 ```
