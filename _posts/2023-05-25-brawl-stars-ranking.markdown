@@ -26,4 +26,4 @@ title: 荒野乱斗英雄强度排行榜 V32
 ![s](/assets/blog-ranking/s.png)
 
 ### TOP
-![top](../assets/blog-ranking/top.png)
+![top](/assets/blog-ranking/top.png)
