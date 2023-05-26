@@ -10,6 +10,7 @@ title: Java 开发环境配置指南 Windows
 
 #### 检查安装
 通过在命令行输入 `java --version` 可以检查是否已经安装完毕
+
 如果安装过了，会出现类似下图的结果，可以跳过下面的安装步骤
 
 ![check.png](/assets/java-setup/check.png)
