@@ -49,6 +49,10 @@ title: Java 开发环境配置指南 Windows
 
 推荐使用 [JetBrains Toolbox] 管理全家桶，轻松安装卸载升级
 
+#### 全局 SDK
+配置 Java SDK (JDK)，具体步骤可以参照[官网说明]
+![sdk.png](/assets/java-setup/sdk.png)
+
 #### 以下是我个人习惯的一些 IDE 配置
 今年 JetBrains 推出了他们的 Beta 版新 UI，界面非常 neat and clean
 
@@ -75,13 +79,19 @@ title: Java 开发环境配置指南 Windows
 
 ![git_toolbox.png](/assets/java-setup/git_toolbox.png)
 
-- IKun Progress：
+- IKun Progress：可以让你的进度条变成 ikun 打篮球
 
+![ikun.jpg](/assets/java-setup/ikun.jpg)
 
-- WakaTime：
+- WakaTime：记录你写码时间的工具
 
+![wakatime.png](/assets/java-setup/wakatime.png)
 
+一览（要素拉满）
+![preview.png](/assets/java-setup/preview.png)
 
+最后，对天空大声说出 Hello World！
+![hello_world.png](/assets/java-setup/hello_world.png)
 
 ### Maven
 to be continued...
@@ -95,3 +105,4 @@ to be continued...
 [source]: https://www.infoworld.com/article/3296360/what-is-the-jdk-introduction-to-the-java-development-kit.html
 [JetBrains Toolbox]: https://www.jetbrains.com/toolbox-app/
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/download/#section=windows
+[官网说明]: https://www.jetbrains.com/help/idea/sdk.html
