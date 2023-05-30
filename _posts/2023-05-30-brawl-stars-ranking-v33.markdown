@@ -31,7 +31,7 @@ title: 荒野乱斗英雄强度排行榜 V33
 ### A
 ![a](/assets/blog-ranking-v33/a.png)
 
-Lpuck 刚把小蜜蜂升到 10 级，小蜜蜂就从 TOP 调到 A 档了（偷笑.jpg)
+Lpuck 刚把小蜜蜂升到 10 级，小蜜蜂就从 TOP 掉到 A 档了（偷笑.jpg)
 
 头铁的老帕克说要把小蜜蜂继续升到 11 级，祝福他吧
 
