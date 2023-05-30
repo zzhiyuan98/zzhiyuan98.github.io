@@ -45,7 +45,43 @@ title: Java 开发环境配置指南 Windows
 打开一个新的终端，确保环境变量生效，输入 `java --version` 检查安装结果
 
 ### Java IDE -  IntelliJ IDEA
-to be continued...
+一位著名上单说过，配置一个让人舒服的 IDE 是成功的一半，[IntelliJ IDEA] 可以说是市面上最火的 Java IDE 了
+
+推荐使用 [JetBrains Toolbox] 管理全家桶，轻松安装卸载升级
+
+#### 以下是我个人习惯的一些 IDE 配置
+今年 JetBrains 推出了他们的 Beta 版新 UI，界面非常 neat and clean
+
+![new_ui.png](/assets/java-setup/new_ui.png)
+
+一位著名中单说过，如果一个程序员不用暗色模式，那 TA 不是一个好的程序员
+
+![theme.png](/assets/java-setup/theme.png)
+
+字号调大一点可以保护视力
+
+![font.png](/assets/java-setup/font.png)
+
+修改 PATH
+
+![ide_path.png](/assets/java-setup/ide_path.png)
+
+安装插件
+
+![plugins.png](/assets/java-setup/plugins.png)
+
+- IdeaVim：一位著名辅助说过，好的程序员都用 vim
+- GitToolBox：可以用来 git blame 的工具，会在代码的每一行后面显示 commit 的作者和 commit message，非常方便
+
+![git_toolbox.png](/assets/java-setup/git_toolbox.png)
+
+- IKun Progress：
+
+
+- WakaTime：
+
+
+
 
 ### Maven
 to be continued...
@@ -57,3 +93,5 @@ to be continued...
 
 [oracle.com]: https://www.oracle.com/java/technologies/downloads/#jdk20-windows
 [source]: https://www.infoworld.com/article/3296360/what-is-the-jdk-introduction-to-the-java-development-kit.html
+[JetBrains Toolbox]: https://www.jetbrains.com/toolbox-app/
+[IntelliJ IDEA]: https://www.jetbrains.com/idea/download/#section=windows
