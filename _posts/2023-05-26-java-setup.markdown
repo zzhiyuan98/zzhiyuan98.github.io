@@ -51,6 +51,7 @@ title: Java 开发环境配置指南 Windows
 
 #### 全局 SDK
 配置 Java SDK (JDK)，具体步骤可以参照[官网说明]
+
 ![sdk.png](/assets/java-setup/sdk.png)
 
 #### 以下是我个人习惯的一些 IDE 配置
@@ -75,7 +76,7 @@ title: Java 开发环境配置指南 Windows
 ![plugins.png](/assets/java-setup/plugins.png)
 
 - IdeaVim：一位著名辅助说过，好的程序员都用 vim
-- GitToolBox：可以用来 git blame 的工具，会在代码的每一行后面显示 commit 的作者和 commit message，非常方便
+- GitToolBox：用来 git blame 的工具，会在代码的每一行后面显示 commit 的作者、时间和 commit message，非常方便
 
 ![git_toolbox.png](/assets/java-setup/git_toolbox.png)
 
@@ -83,7 +84,7 @@ title: Java 开发环境配置指南 Windows
 
 ![ikun.jpg](/assets/java-setup/ikun.jpg)
 
-- WakaTime：记录你写码时间的工具
+- WakaTime：记录你的写码时间
 
 ![wakatime.png](/assets/java-setup/wakatime.png)
 
