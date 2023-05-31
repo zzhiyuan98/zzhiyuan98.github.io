@@ -44,6 +44,12 @@ title: Java 开发环境配置指南 Windows
 
 打开一个新的终端，确保环境变量生效，输入 `java --version` 检查安装结果
 
+### Maven
+在面向 Google 写（伪）技术博客的过程中发现了廖雪峰写的 [Maven 介绍]
+
+安装步骤和 JDK 差不多——官网下载压缩包、本地解压、设置系统环境变量、命令行检查安装
+
+
 ### Java IDE -  IntelliJ IDEA
 一位著名上单说过，配置一个让人舒服的 IDE 是成功的一半，[IntelliJ IDEA] 可以说是市面上最火的 Java IDE 了
 
@@ -89,21 +95,16 @@ title: Java 开发环境配置指南 Windows
 ![wakatime.png](/assets/java-setup/wakatime.png)
 
 一览（要素拉满）
+
 ![preview.png](/assets/java-setup/preview.png)
 
 最后，对天空大声说出 Hello World！
+
 ![hello_world.png](/assets/java-setup/hello_world.png)
-
-### Maven
-to be continued...
-
-### Spring Boot
-to be continued...
-
-
 
 [oracle.com]: https://www.oracle.com/java/technologies/downloads/#jdk20-windows
 [source]: https://www.infoworld.com/article/3296360/what-is-the-jdk-introduction-to-the-java-development-kit.html
+[Maven 介绍]: https://www.liaoxuefeng.com/wiki/1252599548343744/1309301146648610
 [JetBrains Toolbox]: https://www.jetbrains.com/toolbox-app/
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/download/#section=windows
 [官网说明]: https://www.jetbrains.com/help/idea/sdk.html
