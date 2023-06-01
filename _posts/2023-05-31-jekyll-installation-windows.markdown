@@ -11,7 +11,9 @@ title: Jekyll 安装指南 Windows
 然后我就发现了非常致命的问题：Jekyll 官方给出的[安装指南]在 Windows 10 上是跑不通的，以下是我走过的路
 
 1. `ruby -v`，`gem -v`，`gcc -v`，`g++ -v`，`make -v` 这几个命令都能正常运行
+
 2. 在 [RubyInstaller] 下载安装 Ruby+Devkit，安装选项默认，最后一步的时候让程序运行 `ridk install` 并选择 `MSYS2 and MINIGW development tool chain`
+
 3. 新起一个命令行窗口，执行 `gem install jekyll bundler`
 
 第三步过程中出现报错 "Error: Not an ELF file"，在 Stack Overflow 上遍寻无果 
@@ -40,13 +42,18 @@ $ gem install jekyll bundler
 ```
 各类报错总结如下：
 1. 在运行 gem install 时需要给出版本，比如安装的是 Ruby2.5，那么就要运行 `gem2.5 install bundler`
+
 2. 会出现某个包强制要求 Ruby version >= 2.6.0，而官方建议安装的是 2.5.x
+
 3. 安装了 Ruby 2.6 & Ruby 2.7 并配套安装 ruby-switch 切换版本后，以下三类命令都无法执行
+
 ```shell
 $ gem install XXX
 $ gem2.6 install XXX
 $ gem2.7 install XXX
 ```
+
+
 经历了这一系列的折腾之后，我突然觉得，markdown 嘛，又不是前端切图，不起本地服务也挺美的。。。
 
 [GitHub Pages Documentation]: https://docs.github.com/en/pages/quickstart
