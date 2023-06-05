@@ -66,7 +66,7 @@ mysql> grant all on school.* to 'julia'@'%';
 
 新建 `src/main/resouces/application.properties` 文件，相应修改数据库名称、用户名，和用户密码
 
-这里告诉了对面我们要连接哪个数据库，并把我们拥有的登录信息给到了对面
+这一步用来指明要连接哪个数据库，对应的登录信息是什么
 
 ```java
 spring.jpa.hibernate.ddl-auto=update
@@ -76,11 +76,11 @@ spring.datasource.password=123456
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 #spring.jpa.show-sql: true
 ```
-新建文件 `src/main/java/com/example/accessingdatamysql/Student.java`
+新建 `src/main/java/com/example/accessingdatamysql/Student.java` 文件
 
-`@Entity` 表示会使用这个 class 建一个 table
+`@Entity` 标注了这个类会用来建表
 
-这里告诉了对面我们要建一个名叫 student 的表，有这几个列：id，name，grade，其中 id 会自动生成：
+这一步定义了表的结构，有 id、name、grade 这几列，其中 id 会自动生成
 
 ```java
 package com.example.accessingdatamysql;
@@ -117,7 +117,7 @@ public class Student {
     }
 }
 ```
-新建文件 `src/main/java/com/example/accessingdatamysql/StudentRepository.java`
+新建 `StudentRepository.java`
 
 这一步让我们可以用实例去处理一些增删改查的逻辑
 
@@ -127,16 +127,28 @@ package com.example.accessingdatamysql;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentRepository extends CrudRepository<Student, Integer> {
-
 }
 ```
 
-接下来开始写接口，这里省略了 import 的部分，可以用 IDE 的 auto import
+新建 `MainController.java`
 
-这里定义了两个 POST 接口，创建的时候传参是 { name: "Julia", grade: 100 }，会返回一个字符串；读取的时候传参是 { id: 1 }，成功找到 id 会返回一个 Student Object，失败时会抛出一个自定义的错误实例（见下文）
+这里定义了两个 POST 接口，输入和输出都是 JSON
 
 ```java
-// MainController.java
+package com.example.accessingdatamysql;
+
+import com.example.accessingdatamysql.exception.StudentNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Optional;
+
 @Controller
 @RequestMapping(path="/students")
 public class MainController {
@@ -157,26 +169,27 @@ public class MainController {
     }
 }
 ```
-> 资深 Java 工程师这样说：一般一个接口就定义一个 request 类、一个 response 类，好处是代码即协议，在上面还能写注释
+第一个接口的 request 类之前定义过的 Student，第二个接口的 request 类定义如下
 
 ```java
-// Input.java
 package com.example.accessingdatamysql;
 
 public record Input(int id) {}
 ```
+
+> 资深 Java 工程师这样说：一般一个接口就定义一个 request 类、一个 response 类，好处是代码即协议，在上面还能写注释
+
+第二接口里，当输入的 id 在数据库里找不到对应的行时，抛出了一个异常类的实例，下面我们来详细看看这个异常类是怎么定义的
+
 > 资深 Java 工程师这样说：一般业务异常可以都放在 response 里，给出 errorCode 和 errorMsg，然后 http status 还是 200；返回给前端的时候，一般有一步是把异常统一转化为统一的 response，有多种实现方式，介绍几种，关键词 aop，@controlleradvice，@exceptionhandler
 
-异常处理的实操如下
+在 `src/main/java/com/example/accessingdatamysql/exception` 下新建 `SchoolExceptionController.java` 文件
 
-在 `src/main/java/com/example/accessingdatamysql/exception` 下新建以下文件
+`@ControllerAdvice` 代表这里是全局异常处理的入口
 
-@ControllerAdvice 标注了全局异常处理的入口
-
-@ExceptionHandler 标注了某一类异常的处理方法
+`@ExceptionHandler` 后面定义了每一种类型异常的处理方法
 
 ```java
-// SchoolExceptionController.java
 package com.example.accessingdatamysql.exception;
 
 import org.springframework.http.HttpStatus;
@@ -193,30 +206,27 @@ public class SchoolExceptionController {
 }
 
 ```
-
 ```java
-// Error.java
 package com.example.accessingdatamysql.exception;
 
 public record Error(Integer errorCode, String errorMsg) {}
 ```
 
 ```java
-// StudentNotFoundException.java
 package com.example.accessingdatamysql.exception;
 
 public class StudentNotFoundException extends RuntimeException {
 }
 ```
-抛出一个异常：
+结合起来看，当我们抛出一个异常：
 ```java
 throw new StudentNotFoundException();
 ```
-SchoolExceptionController 首先会接到这个异常
+`SchoolExceptionController` 会接到这个异常
 
-然后因为这个异常是 StudentFoundException 类的一个实例，就可以用 exception 方法去处理
+因为这个异常是 `StudentFoundException` 类的一个实例，会调用 `exception` 方法进行处理
 
-最终会返回一个状态码 200，body 为 { errorCode: 12345, errorMsg: "This student does not exist. " } 的 response
+最终会返回一个状态码为 200，body 为 `{ errorCode: 12345, errorMsg: "This student does not exist. " }` 的 response
 
 ### Postman
 TBC
