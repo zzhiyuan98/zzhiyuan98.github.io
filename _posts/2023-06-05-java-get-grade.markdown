@@ -9,7 +9,7 @@ title: 使用 Spring Boot 和 MySql 写一个简单应用
 3. 使用 Postman 调用接口
 4. 使用 Swagger 生成接口文档
 
-> 1 和 2 参考了 Spring Boot 的这篇 [Accessing data with MySQL]，缝合了 [Error Handling for REST with Spring] ；3 和 4 是作者作为缝合怪补充的内容
+> 1 和 2 参考了 Spring Boot 的这篇 [Accessing data with MySQL]，缝合了 [Error Handling for REST with Spring]；3 和 4 是作者作为缝合怪补充的内容
 
 原版使用的场景是保存用户的姓名和邮箱，这里改编成了在数据库里保存学生的姓名和成绩
 
@@ -157,6 +157,7 @@ public class MainController {
     }
 }
 ```
+> 资深 Java 工程师这样说：一般一个接口就定义一个 request 类、一个 response 类，好处是代码即协议，在上面还能写注释
 
 ```java
 // Input.java
@@ -164,7 +165,58 @@ package com.example.accessingdatamysql;
 
 public record Input(int id) {}
 ```
+> 资深 Java 工程师这样说：一般业务异常可以都放在 response 里，给出 errorCode 和 errorMsg，然后 http status 还是 200；返回给前端的时候，一般有一步是把异常统一转化为统一的 response，有多种实现方式，介绍几种，关键词 aop，@controlleradvice，@exceptionhandler
 
+异常处理的实操如下
+
+在 `src/main/java/com/example/accessingdatamysql/exception` 下新建以下文件
+
+@ControllerAdvice 标注了全局异常处理的入口
+
+@ExceptionHandler 标注了某一类异常的处理方法
+
+```java
+// SchoolExceptionController.java
+package com.example.accessingdatamysql.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class SchoolExceptionController {
+    @ExceptionHandler(value = StudentNotFoundException.class)
+    public ResponseEntity<Object> exception(StudentNotFoundException exception) {
+        return new ResponseEntity<>(new Error(12345, "This student does not exist. "), HttpStatus.OK);
+    }
+}
+
+```
+
+```java
+// Error.java
+package com.example.accessingdatamysql.exception;
+
+public record Error(Integer errorCode, String errorMsg) {}
+```
+
+```java
+// StudentNotFoundException.java
+package com.example.accessingdatamysql.exception;
+
+public class StudentNotFoundException extends RuntimeException {
+}
+```
+抛出一个异常：
+```java
+throw new StudentNotFoundException();
+```
+SchoolExceptionController 首先会接到这个异常
+
+然后因为这个异常是 StudentFoundException 类的一个实例，就可以用 exception 方法去处理
+
+最终会返回一个状态码 200，body 为 { errorCode: 12345, errorMsg: "This student does not exist. " } 的 response
 
 ### Postman
 TBC
