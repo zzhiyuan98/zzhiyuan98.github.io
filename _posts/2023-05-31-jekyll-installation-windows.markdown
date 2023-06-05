@@ -54,7 +54,7 @@ $ gem2.7 install XXX
 ```
 
 
-经历了这一系列的折腾之后，我突然觉得，markdown 嘛，又不是前端切图，不起本地服务也挺美的。。。
+经历了这一系列的折腾之后，我突然觉得，IDE 的 markdown preview 还是挺美的
 
 [GitHub Pages Documentation]: https://docs.github.com/en/pages/quickstart
 [安装指南]: https://jekyllrb.com/docs/installation/windows/
