@@ -169,7 +169,7 @@ public class MainController {
     }
 }
 ```
-第一个接口的 request 类之前定义过的 Student，第二个接口的 request 类定义如下
+第一个接口的 request 类是之前定义过的 Student，第二个接口的 request 类定义如下
 
 ```java
 package com.example.accessingdatamysql;
@@ -177,9 +177,9 @@ package com.example.accessingdatamysql;
 public record Input(int id) {}
 ```
 
-> 资深 Java 工程师这样说：一般一个接口就定义一个 request 类、一个 response 类，好处是代码即协议，在上面还能写注释
+> 资深 Java 工程师这样说：一般一个接口就定义一个 request 类、一个 response 类，代码即协议，在上面还能写注释
 
-第二接口里，当输入的 id 在数据库里找不到对应的行时，抛出了一个异常类的实例，下面我们来详细看看这个异常类是怎么定义的
+第二个接口里，当输入的 id 在数据库里找不到时，抛出了一个异常类的实例，下面我们来详细看看这个异常类是怎么定义的
 
 > 资深 Java 工程师这样说：一般业务异常可以都放在 response 里，给出 errorCode 和 errorMsg，然后 http status 还是 200；返回给前端的时候，一般有一步是把异常统一转化为统一的 response，有多种实现方式，介绍几种，关键词 aop，@controlleradvice，@exceptionhandler
 
