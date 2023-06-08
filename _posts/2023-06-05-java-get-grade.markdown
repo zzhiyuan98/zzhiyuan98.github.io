@@ -219,14 +219,57 @@ public class StudentNotFoundException extends RuntimeException {
 }
 ```
 结合起来看，当我们抛出一个异常：
+
 ```java
 throw new StudentNotFoundException();
 ```
+
 `SchoolExceptionController` 会接到这个异常
 
 因为这个异常是 `StudentFoundException` 类的一个实例，会调用 `exception` 方法进行处理
 
 最终会返回一个状态码为 200，body 为 `{ errorCode: 12345, errorMsg: "This student does not exist. " }` 的 response
+
+接下来，我们可以用 `./gradlew bootRun` 或 `./mvnw spring-boot:run` 让程序跑起来
+
+```shell
+curl -X POST http://localhost:8080/students/add -H 'Content-Type: application/json' -d '{ "name": "Julia", "grade": 100 }'
+```
+
+添加成功后应该可以看到 `Student Rpuck added`
+
+类似地，可以用 curl 命令获取学生的成绩
+
+```shell
+curl -X POST http://localhost:8080/students/grade -H 'Content-Type: application/json' -d '{ "id": 1 }'
+```
+
+得到 `{"name":"Julia","grade":100}`
+
+最后，通过 MySQL 命令：
+
+查看所有数据库
+
+```shell
+mysql> show databases;
+```
+选中其中一个数据库，以我们之前建的 `school` 为例
+
+```shell
+mysql> use school;
+```
+
+查看该数据库里的所有表
+
+```shell
+mysql> show tables;
+```
+
+查看表里所有记录
+
+```shell
+mysql> select * from student;
+```
 
 ### Postman
 TBC
