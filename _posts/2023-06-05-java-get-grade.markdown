@@ -13,6 +13,8 @@ title: 使用 Spring Boot 和 MySql 写一个简单应用
 
 原版使用的场景是保存用户的姓名和邮箱，这里改编成了在数据库里保存学生的姓名和成绩
 
+👉 [Source Code]
+
 ### MySQL
 官网下载安装（米老猫使用的是 Windows 环境，所以就贴 Windows 链接了）
 
@@ -238,7 +240,7 @@ curl -X POST http://localhost:8080/students/add -H 'Content-Type: application/js
 
 添加成功后应该可以看到 `Student Rpuck added`
 
-类似地，可以用 curl 命令获取学生的成绩
+类似地，可以用 cURL 命令获取学生的成绩
 
 ```shell
 curl -X POST http://localhost:8080/students/grade -H 'Content-Type: application/json' -d '{ "id": 1 }'
@@ -272,7 +274,11 @@ mysql> select * from student;
 ```
 
 ### Postman
-TBC
+一个很好用的接口测试工具，虽然使用 cURL 命令也可以达到同样的目的，不过 Postman 在用户体验上做得还是非常不错的，提供了一个简单易用的 UI 界面
+
+![postman](/assets/get-grade/postman.png)
+
+[Postman Downloads]
 
 ### Swagger
 TBC
@@ -289,3 +295,5 @@ TBC
 [Error Handling for REST with Spring]: https://www.baeldung.com/exception-handling-for-rest-with-spring
 [Spring Initializr]: https://start.spring.io/#!type=maven-project&language=java&platformVersion=3.1.0&packaging=jar&jvmVersion=17&groupId=com.example&artifactId=accessing-data-mysql&name=accessing-data-mysql&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mysql&dependencies=web,data-jpa,mysql
 [Accessing data with MySQL]: https://spring.io/guides/gs/accessing-data-mysql/
+[Source Code]: https://github.com/zzhiyuan98/access-data-mysql
+[Postman Downloads]: https://www.postman.com/downloads/
