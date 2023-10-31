@@ -85,4 +85,4 @@ iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color 
 ![effect](/assets/mac-setup/effect.png)
 
 ### Git
-
+TBC
