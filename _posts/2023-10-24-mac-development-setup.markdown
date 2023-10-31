@@ -26,7 +26,7 @@ brew install jandedobbeleer/oh-my-posh/oh-my-posh
 
 这里以 [atomic](https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/atomic.omp.json) 作为示例
 
-![atomic](../assets/mac-setup/atomic.png)
+![atomic](/assets/mac-setup/atomic.png)
 
 执行以下命令可以预览效果，需要替换具体的 JSON 文件名，即 atomic.omp.json -> XXX.omp.json
 
@@ -44,7 +44,7 @@ oh-my-posh font install
 
 再在 iTerm > Settings > Profiles > Text > Font 里选择安装好的字体，就可以正常显示主题了
 
-![font](../assets/mac-setup/font.png)
+![font](/assets/mac-setup/font.png)
 
 这个效果是即时的，如果我们新开一个命令行窗口，刚才的主题就消失了
 
@@ -72,17 +72,17 @@ source ~/.zshrc
 
 iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color Presets 里 [Visit Online Gallery](https://iterm2colorschemes.com/)
 
-![color](../assets/mac-setup/iterm-color.png)
+![color](/assets/mac-setup/iterm-color.png)
 
 以我使用的 [nord](https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/nord.itermcolors) 配色举例，链接点开后右键保存为 nord.itermcolors 文件，再在之前的下拉框里选择就可以了 
 
 下面是一些个人向的设定
 
-![background](../assets/mac-setup/background.png)
+![background](/assets/mac-setup/background.png)
 
 最终的效果图
 
-![effect](../assets/mac-setup/effect.png)
+![effect](/assets/mac-setup/effect.png)
 
 ### Git
 
