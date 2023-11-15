@@ -38,7 +38,7 @@ npm init @eslint/config
 npm install --save-dev eslint
 ```
 
-新建 .eslintrc.js 文件，在里面写配置规则（详见下方[问题与使用 - 配置规则](#配置流程)）
+新建 .eslintrc.js 文件，在里面写配置规则（详见下方[问题与使用 - 配置规则](#配置规则)）
 
 最后，在 .eslintignore 里添加不需要 lint 的文件夹名称
 
@@ -74,9 +74,9 @@ lint-staged 有多种[配置方式](https://github.com/lint-staged/lint-staged#c
 
 ```json
 {
-  "lint-staged": {
-    "*": "your-cmd"
-  }
+  "lint-staged": {
+    "*": "your-cmd"
+  }
 }
 ```
 
@@ -84,9 +84,9 @@ lint-staged 有多种[配置方式](https://github.com/lint-staged/lint-staged#c
 
 ```json
 {
-  "lint-staged": {
-    "*.{js,jsx}": ["eslint --fix --cache", "prettier --write"]
-  }
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint --fix --cache", "prettier --write"]
+  }
 }
 ```
 
