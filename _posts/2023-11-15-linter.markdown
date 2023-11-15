@@ -1,0 +1,151 @@
+---
+layout: post
+title: 代码检查与格式化工具
+---
+### 为什么需要
+代码检查有助于提升代码质量，能够帮我们规避一些常见的 bug
+
+格式化有助于统一代码风格，并有助于代码的可读性
+
+在多人协作的项目中，每个人都会有不同的开发风格，这就会引入代码风格的不一致（例如：单引号双引号的使用，大括号中间加空格等等）
+
+而让大家都去遵守同一套规则，在心里默记并执行又是费时费力的
+
+因此使用工具来帮助我们检查并自动格式化就显得科学很多
+
+### 工具介绍
+目前比较主流的一套工具是 eslint + prettier + lint-staged + husky，一些比较知名的项目，像 [Next.js](https://github.com/vercel/next.js)、[Ant Design](https://github.com/ant-design/ant-design) 这些，也是使用的这一套流程
+
+[eslint](https://eslint.org/): 分析代码，定位问题，自动修复，同时支持一些比较常见的格式化（例如：统一使用双引号）
+
+[prettier](https://prettier.io/): eslint 更侧重于代码的质量检查，prettier 则专注于代码的格式化（例如：import 排序，一行最多可以有多长等等）
+
+[lint-staged](https://github.com/lint-staged/lint-staged): 可以对 staged files 执行多个 linter (eslint & prettier)
+
+[husky](https://typicode.github.io/husky/): pre-commit 工具，可以在 commit 之前执行像 lint-staged 这样的命令，以确保检查和格式化这一步的发生
+
+### 配置流程
+#### [安装 eslint](https://eslint.org/docs/latest/use/getting-started)
+一键安装（使用命令行回答问题，自动生成配置文件）
+
+```shell
+npm init @eslint/config
+```
+
+或手动安装
+
+```shell
+npm install --save-dev eslint
+```
+
+新建 .eslintrc.js 文件，在里面写配置规则（详见下方[问题与使用 - 配置规则](#配置流程)）
+
+最后，在 .eslintignore 里添加不需要 lint 的文件夹名称
+
+执行：
+
+```shell
+npx eslint --fix src/file1.js
+```
+
+#### [安装 prettier](https://prettier.io/docs/en/install)
+
+```shell
+npm install --save-dev --save-exact prettier
+```
+
+新建 .prettierrc.js，写配置规则
+
+在 .prettierignore 里添加不需要格式化的文件夹名称
+
+执行：
+
+```shell
+npx prettier --write src/file1.js
+```
+
+[安装 lint-staged](https://github.com/lint-staged/lint-staged#installation-and-setup)
+
+```shell
+npm install --save-dev lint-staged
+```
+
+lint-staged 有多种[配置方式](https://github.com/lint-staged/lint-staged#configuration)，这里介绍一种，在 package.json 文件里，添加一个新对象
+
+```json
+{
+  "lint-staged": {
+    "*": "your-cmd"
+  }
+}
+```
+
+具体一点，对所有 js, jsx 后缀结尾的 staged files 执行 eslint 和 prettier
+
+```json
+{
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint --fix --cache", "prettier --write"]
+  }
+}
+```
+
+#### [安装 husky](https://typicode.github.io/husky/getting-started.html)
+
+一键配置安装
+
+```shell
+npx husky-init && npm install
+```
+
+替换 pre-commit 的默认命令
+
+```shell
+npx husky set .husky/pre-commit 'npx lint-staged --verbose'
+```
+
+### 问题与使用
+#### 跳过检查
+如果有各种理由想要跳过检查，可以在 git commit 时添加 --no-verify
+
+如果不想每次都打 --no-verify，可以在 ~/.gitconfig 里配置 alias（例如：cm = commit --no-verify -m）
+
+#### 全局格式化
+
+由于 lint-staged 只会对每次改动的文件做格式化，所以通常配置完成后需要对已有代码进行一次全局格式化，防止后续每次提交时 git diff 出很多格式化的修改
+
+另外如果有其他同事不喜欢跑检查，也可以隔一段时间全局跑一次
+
+在 package.json 里面可以根据项目结构定义一些全局 lint 的脚本，比如：
+
+```json
+{
+  ...,
+  "scripts": {
+    ...,
+    "lint-eslint": "eslint --ext .js,.jsx,.ts,.tsx src/ --fix --cache",
+    "lint-prettier": "prettier --write --cache --loglevel warn src/"
+  }
+}
+
+```
+
+执行：
+
+```shell
+npm run lint-eslint && npm run lint-prettier
+```
+
+#### 配置规则
+
+"[extends](https://eslint.org/docs/latest/use/configure/configuration-files#extending-configuration-files)" 里可以添加默认规则，e.g., "plugin:react/recommended", "airbnb"
+
+"rules" 可以 overwrite 默认规则，需要在里面添加具体的规则名称、开关、选项（如有）
+
+eslint 官网上有一份[规则参考](https://eslint.org/docs/latest/rules/)，里面有常见规则的名词解释，点进去可以看到具体的选项代表什么意思
+
+关于规则开关
+
+"off" 或 0 表示关闭
+"warn" 或 1 表示警告，会在跑 lint-staged 的时候给出 warning，但不会影响 commit
+"error" 或 2 表示错误，会在跑 lint-staged 的时候给出错误信息，commit 会失败
