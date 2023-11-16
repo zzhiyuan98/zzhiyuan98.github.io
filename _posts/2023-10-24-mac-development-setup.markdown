@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mac 开发环境配置指南
+title: Mac 前端开发环境配置指南
 ---
 
 ### [Homebrew](https://brew.sh/)
@@ -85,4 +85,27 @@ iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color 
 ![effect](/assets/mac-setup/effect.png)
 
 ### Git
-TBC
+[安装](https://git-scm.com/download/mac)
+
+```shell
+brew install git
+```
+
+配置 SSH，可以参考 GitHub 的 [SSH 密钥指南](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)，其他像 GitLab、Gitea 这些平台也是类似的操作步骤
+
+建立新的 SSH 密钥对
+
+```shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
+按 Enter 确认保存在默认位置
+
+按 Enter 留空密钥锁码，再次按 Enter 确认留空
+
+
+
+
+
+配置 git alias
+
