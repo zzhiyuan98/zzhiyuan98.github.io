@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Mac 开发环境配置指南
+title: Mac 前端开发环境配置指南
 ---
 
 ### [Homebrew](https://brew.sh/)
@@ -85,4 +85,125 @@ iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color 
 ![effect](/assets/mac-setup/effect.png)
 
 ### Git
+#### [安装 Git](https://git-scm.com/download/mac)
+
+```shell
+brew install git
+```
+
+
+#### 一台设备上管理多个 Git 服务器账号
+
+参考：[Manage GitHub, and Gitlab accounts on single machine with SSH keys on Mac](https://medium.com/@viviennediegoencarnacion/manage-github-and-gitlab-accounts-on-single-machine-with-ssh-keys-on-mac-43fda49b7c8d)
+
+配置单个 SSH key 可以参考 GitHub 的 [SSH 密钥指南](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)，这里就不赘述了，下面是为 GitHub 和 Gitlab 配置 SSH key 的步骤：
+
+##### 1. 建立新的 SSH 密钥对
+
+```shell
+ssh-keygen -t ed25519 -C "personal_email@example.com" -f ~/.ssh/id_ed25519_github
+ssh-keygen -t ed25519 -C "work_email@example.com" -f ~/.ssh/id_ed25519_gitlab
+```
+
+注：可以使用同一个邮箱，也可以将工作邮箱和个人邮箱做区分，见下方[配置 Git](#5-配置-git)
+
+查看创建好的密钥对👇，id_ed25519_xxx 对应私钥，id_ed25519_xxx.pub 对应公钥
+
+```shell
+ls ~/.ssh
+```
+
+##### 2. 在代码托管平台上添加 SSH key，下面以 GitHub 举例
+
+复制公钥到剪贴板
+
+```shell
+pbcopy < ~/.ssh/id_ed25519_github.pub
+```
+
+登录 GitHub -> Settings -> SSH and GPG keys -> New SSH key
+
+在 Key 一栏粘贴公钥 -> 填写 Title -> Add SSH key
+
+GitHub 的这一步就算完成了，Gitlab 也是同理
+
+##### 3. 使用 ssh-agent 管理密钥
+
+```shell
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519_github
+ssh-add ~/.ssh/id_ed25519_gitlab
+```
+
+##### 4. 修改 SSH 配置文件
+
+```shell
+vim ~/.ssh/config
+```
+
+```
+Host github.com
+  HostName github.com
+  User personal_email@example.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_github
+  
+Host gitlab.com
+  HostName gitlab.com
+  User work_email@example.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/id_ed25519_gitlab
+```
+
+##### 5. 配置 Git
+
+如果两个平台使用的是同一个邮箱，修改全局配置就可以了
+
+方法一
+
+```shell
+git config --global user.name "Julia Zhang"
+git config --global user.email "work_email@example.com"
+```
+
+方法二
+
+```shell
+vim ~/.gitconfig
+```
+
+```
+[user]
+    name = Julia Zhang
+    email = work_email@example.com
+    signingkey = XXXXXXXX
+```
+
+没有配置 GPG key 的话可以不用写 signing key
+
+如果使用的是不同的邮箱，和上面一样，先将使用最多的邮箱添加到全局配置里（这里假设是 work_email@example.com）
+
+再在单个 repo 下修改配置，设置为 personal_email@example.com
+
+方法一
+
+```shell
+cd local_repo_directory
+git config --local user.name "Julia Zhang"
+git config --local user.email "personal_email@example.com"
+```
+
+方法二
+
+```shell
+vim .git/config
+```
+
+```
+[user]
+    name = Julia Zhang
+    email = personal_email@example.com
+```
+
+#### 配置 git alias
 TBC
