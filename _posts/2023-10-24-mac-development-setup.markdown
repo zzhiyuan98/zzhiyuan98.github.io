@@ -85,25 +85,60 @@ iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color 
 ![effect](/assets/mac-setup/effect.png)
 
 ### Git
-[安装](https://git-scm.com/download/mac)
+[安装 Git](https://git-scm.com/download/mac)
 
 ```shell
 brew install git
 ```
 
-配置 SSH，可以参考 GitHub 的 [SSH 密钥指南](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)，其他像 GitLab、Gitea 这些平台也是类似的操作步骤
+配置 SSH key，可以参考 GitHub 的 [SSH 密钥指南](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)，其他像 GitLab、Gitea 这些平台也是类似的操作步骤
+
+这里以配置 GitHub 举例：
 
 建立新的 SSH 密钥对
 
 ```shell
 ssh-keygen -t ed25519 -C "your_email@example.com"
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/zhangzhiyuan/.ssh/id_rsa): id_github
 ```
 
-按 Enter 确认保存在默认位置
+查看创建好的密钥对，id_github 对应私钥，id_github.pub 对应公钥
 
-按 Enter 留空密钥锁码，再次按 Enter 确认留空
+```shell
+cd ~/.ssh && ls
+```
+
+启动 ssh-agent，添加创建好的密钥
+
+```shell
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_github
+```
+
+配置 SSH
+
+```shell
+vim ~/.ssh/config
+```
+
+```
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_github
+```
+
+复制公钥到剪贴板
+
+```shell
+pbcopy < ~/.ssh/id_github.pub
+```
+
+Settings -> SSH and GPG keys -> New SSH key，填写名称，粘贴公钥
 
 
+配置 gitconfig
 
 
 
