@@ -3,7 +3,7 @@ layout: post
 title: Mac 前端开发环境配置指南
 ---
 
-### [Homebrew](https://brew.sh/)
+## [Homebrew](https://brew.sh/)
 非常好用的包管理工具，轻松实现安装、卸载、更新
 
 安装命令👇
@@ -12,7 +12,7 @@ title: Mac 前端开发环境配置指南
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### [iTerm2](https://iterm2.com/) + [oh-my-posh](https://ohmyposh.dev/)
+## [iTerm2](https://iterm2.com/) + [oh-my-posh](https://ohmyposh.dev/)
 
 iTerm2 是 Mac 默认 Terminal 的优质替代品，[点击这里](https://iterm2.com/downloads.html)下载安装
 
@@ -84,21 +84,21 @@ iTerm 也有一些预设的主题色，在 Settings > Profiles > Colors > Color 
 
 ![effect](/assets/mac-setup/effect.png)
 
-### Git
-#### [安装 Git](https://git-scm.com/download/mac)
+## Git
+### [安装 Git](https://git-scm.com/download/mac)
 
 ```shell
 brew install git
 ```
 
 
-#### 一台设备上管理多个 Git 服务器账号
+### 一台设备上管理多个 Git 服务器账号
 
 参考：[Manage GitHub, and Gitlab accounts on single machine with SSH keys on Mac](https://medium.com/@viviennediegoencarnacion/manage-github-and-gitlab-accounts-on-single-machine-with-ssh-keys-on-mac-43fda49b7c8d)
 
 配置单个 SSH key 可以参考 GitHub 的 [SSH 密钥指南](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)，这里就不赘述了，下面是为 GitHub 和 Gitlab 配置 SSH key 的步骤：
 
-##### 1. 建立新的 SSH 密钥对
+#### 1. 建立新的 SSH 密钥对
 
 ```shell
 ssh-keygen -t ed25519 -C "personal_email@example.com" -f ~/.ssh/id_ed25519_github
@@ -113,7 +113,7 @@ ssh-keygen -t ed25519 -C "work_email@example.com" -f ~/.ssh/id_ed25519_gitlab
 ls ~/.ssh
 ```
 
-##### 2. 在代码托管平台上添加 SSH key，下面以 GitHub 举例
+#### 2. 在代码托管平台上添加 SSH key，下面以 GitHub 举例
 
 复制公钥到剪贴板
 
@@ -127,7 +127,7 @@ pbcopy < ~/.ssh/id_ed25519_github.pub
 
 GitHub 的这一步就算完成了，Gitlab 也是同理
 
-##### 3. 使用 ssh-agent 管理密钥
+#### 3. 使用 ssh-agent 管理密钥
 
 ```shell
 eval "$(ssh-agent -s)"
@@ -135,7 +135,7 @@ ssh-add ~/.ssh/id_ed25519_github
 ssh-add ~/.ssh/id_ed25519_gitlab
 ```
 
-##### 4. 修改 SSH 配置文件
+#### 4. 修改 SSH 配置文件
 
 ```shell
 vim ~/.ssh/config
@@ -155,7 +155,7 @@ Host gitlab.com
   IdentityFile ~/.ssh/id_ed25519_gitlab
 ```
 
-##### 5. 配置 Git
+#### 5. 配置 Git
 
 如果两个平台使用的是同一个邮箱，修改全局配置就可以了
 
@@ -205,5 +205,5 @@ vim .git/config
     email = personal_email@example.com
 ```
 
-#### 配置 git alias
+### 配置 git alias
 TBC
