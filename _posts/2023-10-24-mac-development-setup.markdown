@@ -205,5 +205,44 @@ vim .git/config
     email = personal_email@example.com
 ```
 
-### 配置 git alias
-TBC
+### 配置 Git Alias
+如果习惯在终端操作，可以为常用的 Git 命令添加 alias，例如：
+
+```shell
+git config global alias.co checkout
+```
+
+这样当我们想打 `git chekout master` 时，只需要打 `git co master` 就可以了
+
+另一种方法是修改配置文件，可以批量添加 alias
+
+```shell
+vim ~/.gitconfig
+```
+
+```
+[alias]
+  co = checkout
+  cb = checkout -b
+  b = branch
+  d = diff
+```
+
+如果想实现 `gco = git checkout` 的效果，可以在 .zshrc 里定义 alias
+
+```shell
+vim ~/.zshrc
+```
+
+```shell
+# git aliases
+alias gca="git commit --all -S"
+alias gcb="git checkout -b"
+alias gco="git checkout"
+alias gd="git diff"
+alias gpd="git push o HEAD -f"
+alias pull="git pull --rebase"
+alias grbi="git rebase -i"
+alias grh="git reset --hard"
+alias gdbr="git branch --list | grep -Ev '^\* ' | fzf -m | xargs -I {} git branch -D {}"
+```
