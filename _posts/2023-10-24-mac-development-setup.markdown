@@ -373,3 +373,65 @@ cdnvm() {
 alias cd='cdnvm'
 cdnvm "$PWD" || exit
 ```
+
+## [WebStorm](https://www.jetbrains.com/webstorm/)
+工作之前用的是 [VS Code](https://code.visualstudio.com/)，工作之后受前辈影响换了 WebStorm
+
+使用 VS Code 的小伙伴后面就可以不用看了，等我以后换了 IDE 再来更新吧
+
+推荐使用 [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)] 管理全家桶，轻松安装卸载升级
+
+![toolbox](/assets/mac-setup/toolbox.png)
+
+大家选择自己喜欢的 IDE 就好，这里简单罗列一下我的 IDE 配置（因为之前写过 IntelliJ IDEA 的配置，有些图我就用之前的了）
+
+### 外观
+
+推荐使用 JetBrains 的新 UI，界面非常 neat and clean
+
+![new_ui](/assets/java-setup/new_ui.png)
+
+暗色模式，字号看着调整
+
+![theme](/assets/java-setup/theme.png)
+
+换上程序员专属字体 [FiraCode](https://github.com/tonsky/FiraCode)
+
+[安装](https://github.com/tonsky/FiraCode/wiki/Installing)
+
+```shell
+brew install font-fira-code
+```
+
+![ide-font](/assets/mac-setup/ide-font.png)
+
+### 插件
+
+![plugins](/assets/java-setup/plugins.png)
+
+- IdeaVim：vim 插件
+- GitToolBox：用来 git blame 的工具，会在代码的每一行后面显示 commit 的作者、时间和 commit message
+
+![git_toolbox](/assets/java-setup/git_toolbox.png)
+
+- IKun Progress：可以让你的进度条变成 ikun 打篮球
+
+![ikun](/assets/java-setup/ikun.jpg)
+
+- WakaTime：记录你的写码时间
+
+![wakatime](/assets/java-setup/wakatime.png)
+
+一览（要素拉满）
+
+![preview.png](/assets/java-setup/preview.png)
+
+### [终端打开 IDE](https://www.jetbrains.com/help/webstorm/working-with-the-ide-features-from-command-line.html#toolbox)
+
+![toolbox-settings](/assets/mac-setup/toolbox-settings.png)
+
+![script](/assets/mac-setup/script.png)
+
+这样就可以像打开 VS Code 一样使用 `code .` 打开 WebStorm 了
+
+最后，祝大家都能愉快写码（完）
