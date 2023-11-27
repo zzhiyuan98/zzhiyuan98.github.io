@@ -379,7 +379,7 @@ cdnvm "$PWD" || exit
 
 使用 VS Code 的小伙伴后面就可以不用看了，等我以后换了 IDE 再来更新吧
 
-推荐使用 [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)] 管理全家桶，轻松安装卸载升级
+推荐使用 [JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/) 管理全家桶，轻松安装卸载升级
 
 ![toolbox](/assets/mac-setup/toolbox.png)
 
